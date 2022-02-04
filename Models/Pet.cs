@@ -6,9 +6,20 @@ namespace TamagotchiAPI.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime Birthday { get; set; }
-        public int HungerLevel { get; set; }
-        public int HappinessLevel { get; set; }
-        public bool IsDead { get; set; }
+        public DateTime Birthday { get; set; } = DateTime.Now;
+        public int HungerLevel { get; set; } = 1;
+        public int HappinessLevel { get; set; } = 1;
+        public bool IsDead { get; set; } = false;
+
+        // public bool deadPet
+        // {
+        //     get
+        //     {
+        //         if (Playtime.When > DateTime.Now(3))
+        //         {
+        //             IsDead = true;
+        //         }
+        //     }
+        // }
     }
 }
