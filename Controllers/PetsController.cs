@@ -35,7 +35,11 @@ namespace TamagotchiAPI.Controllers
         {
             // Uses the database context in `_context` to request all of the Pets, sort
             // them by row id and return them as a JSON array.
-            return await _context.Pets.OrderBy(row => row.Id).ToListAsync();
+            return await _context.Pets.OrderBy(row => row.Id)
+            .Include(pet => pet.Playtimes)
+            .Include(pet => pet.Feedings)
+            .Include(pet => pet.Scoldings)
+            .ToListAsync();
         }
 
         // GET: api/Pets/5
@@ -169,12 +173,13 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
-            else
-            {
-                pet.HungerLevel = +3;
-                pet.HappinessLevel = +5;
-            }
+
+
+
             playtime.PetId = pet.Id;
+            playtime.Birthday = DateTime.Now;
+            pet.HungerLevel += 3;
+            pet.HappinessLevel += 5;
             _context.Playtimes.Add(playtime);
             await _context.SaveChangesAsync();
             return Ok(playtime);
@@ -188,12 +193,12 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
-            else
-            {
-                pet.HungerLevel = -5;
-                pet.HappinessLevel = +3;
-            }
+
+
             feeding.PetId = pet.Id;
+            feeding.When = DateTime.Now;
+            pet.HungerLevel -= 5;
+            pet.HappinessLevel += 3;
             _context.Feedings.Add(feeding);
             await _context.SaveChangesAsync();
             return Ok(feeding);
@@ -207,7 +212,13 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
+
+
+
+
             scolding.PetId = pet.Id;
+            scolding.When = DateTime.Now;
+            pet.HappinessLevel -= 5;
             _context.Scoldings.Add(scolding);
             await _context.SaveChangesAsync();
             return Ok(scolding);
