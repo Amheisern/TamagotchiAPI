@@ -159,6 +159,24 @@ namespace TamagotchiAPI.Controllers
             // Return a copy of the deleted data
             return Ok(pet);
         }
+        //nested controllers start here --------------------------------------------------------------
+        //Playtime controller
+        [HttpPost("{id}/Playtimes")]
+        public async Task<ActionResult<Playtime>> CreatePlaytimesForPet(int id, Playtime playtime)
+        {
+            var pet = await _context.Pets.FindAsync(id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+            playtime.PetId = pet.Id;
+            _context.Playtimes.Add(playtime);
+            await _context.SaveChangesAsync();
+            return Ok(playtime);
+        }
+        // feedings controller
+
+        // scolding controller 
 
         // Private helper method that looks up an existing pet by the supplied id
         private bool PetExists(int id)
