@@ -160,7 +160,7 @@ namespace TamagotchiAPI.Controllers
             return Ok(pet);
         }
         //nested controllers start here --------------------------------------------------------------
-        //Playtime controller
+        //Playtime nested controller
         [HttpPost("{id}/Playtimes")]
         public async Task<ActionResult<Playtime>> CreatePlaytimesForPet(int id, Playtime playtime)
         {
@@ -169,12 +169,17 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                pet.HungerLevel = +3;
+                pet.HappinessLevel = +5;
+            }
             playtime.PetId = pet.Id;
             _context.Playtimes.Add(playtime);
             await _context.SaveChangesAsync();
             return Ok(playtime);
         }
-        // feedings controller
+        // feedings nested controller
         [HttpPost("{id}/Feedings")]
         public async Task<ActionResult<Feeding>> CreateFeedingsForPet(int id, Feeding feeding)
         {
@@ -183,12 +188,17 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                pet.HungerLevel = -5;
+                pet.HappinessLevel = +3;
+            }
             feeding.PetId = pet.Id;
             _context.Feedings.Add(feeding);
             await _context.SaveChangesAsync();
             return Ok(feeding);
         }
-        // scolding controller 
+        // scolding nested controller 
         [HttpPost("{id}/Scoldings")]
         public async Task<ActionResult<Scolding>> CreateScoldingsForPet(int id, Scolding scolding)
         {
