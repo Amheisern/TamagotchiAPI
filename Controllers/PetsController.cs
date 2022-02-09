@@ -226,6 +226,7 @@ namespace TamagotchiAPI.Controllers
             scolding.PetId = pet.Id;
             scolding.When = DateTime.Now;
             pet.HappinessLevel -= 5;
+            pet.HasPulse();
             _context.Scoldings.Add(scolding);
             await _context.SaveChangesAsync();
             return Ok(scolding);
