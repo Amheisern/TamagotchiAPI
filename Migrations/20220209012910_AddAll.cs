@@ -18,8 +18,8 @@ namespace TamagotchiAPI.Migrations
                     Birthday = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     HungerLevel = table.Column<int>(type: "integer", nullable: false),
                     HappinessLevel = table.Column<int>(type: "integer", nullable: false),
-                    IsDead = table.Column<bool>(type: "boolean", nullable: false),
-                    LastInteractedWithDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    LastInteractedWithDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    IsDead = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {

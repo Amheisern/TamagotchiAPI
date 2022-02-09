@@ -173,16 +173,25 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
+            else if (pet.HasPulse() == true)
+            {
 
 
 
-            playtime.PetId = pet.Id;
-            playtime.When = DateTime.Now;
-            pet.HungerLevel += 3;
-            pet.HappinessLevel += 5;
-            _context.Playtimes.Add(playtime);
-            await _context.SaveChangesAsync();
-            return Ok(playtime);
+                playtime.PetId = pet.Id;
+                playtime.When = DateTime.Now;
+                pet.HungerLevel += 3;
+                pet.HappinessLevel += 5;
+                pet.LastInteractedWithDate = DateTime.Now;
+
+                _context.Playtimes.Add(playtime);
+                await _context.SaveChangesAsync();
+                return Ok(playtime);
+            }
+            else
+            {
+                return Ok("Pet DEAD.  I blame you! ");
+            }
         }
         // feedings nested controller
         [HttpPost("{id}/Feedings")]
@@ -199,6 +208,7 @@ namespace TamagotchiAPI.Controllers
             feeding.When = DateTime.Now;
             pet.HungerLevel -= 5;
             pet.HappinessLevel += 3;
+            pet.LastInteractedWithDate = DateTime.Now;
             _context.Feedings.Add(feeding);
             await _context.SaveChangesAsync();
             return Ok(feeding);
@@ -212,9 +222,6 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
-
-
-
 
             scolding.PetId = pet.Id;
             scolding.When = DateTime.Now;

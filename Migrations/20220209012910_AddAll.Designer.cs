@@ -10,7 +10,7 @@ using TamagotchiAPI.Models;
 namespace TamagotchiAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220208235927_AddAll")]
+    [Migration("20220209012910_AddAll")]
     partial class AddAll
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
