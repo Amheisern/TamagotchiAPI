@@ -58,6 +58,9 @@ namespace TamagotchiAPI.Migrations
                     b.Property<bool>("IsDead")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime>("LastInteractedWithDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -73,11 +76,11 @@ namespace TamagotchiAPI.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<int>("PetId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("When")
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -109,7 +112,7 @@ namespace TamagotchiAPI.Migrations
             modelBuilder.Entity("TamagotchiAPI.Models.Feeding", b =>
                 {
                     b.HasOne("TamagotchiAPI.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Feedings")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -120,7 +123,7 @@ namespace TamagotchiAPI.Migrations
             modelBuilder.Entity("TamagotchiAPI.Models.Playtime", b =>
                 {
                     b.HasOne("TamagotchiAPI.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Playtimes")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -131,12 +134,21 @@ namespace TamagotchiAPI.Migrations
             modelBuilder.Entity("TamagotchiAPI.Models.Scolding", b =>
                 {
                     b.HasOne("TamagotchiAPI.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Scoldings")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("TamagotchiAPI.Models.Pet", b =>
+                {
+                    b.Navigation("Feedings");
+
+                    b.Navigation("Playtimes");
+
+                    b.Navigation("Scoldings");
                 });
 #pragma warning restore 612, 618
         }

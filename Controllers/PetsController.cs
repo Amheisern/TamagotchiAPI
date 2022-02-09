@@ -177,7 +177,7 @@ namespace TamagotchiAPI.Controllers
 
 
             playtime.PetId = pet.Id;
-            playtime.Birthday = DateTime.Now;
+            playtime.When = DateTime.Now;
             pet.HungerLevel += 3;
             pet.HappinessLevel += 5;
             _context.Playtimes.Add(playtime);

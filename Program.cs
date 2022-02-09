@@ -42,6 +42,7 @@ namespace TamagotchiAPI
                 return 0;
             }
         }
+        //----------------------------------------------------------------
         public static async Task Main(string[] args)
         {
             var host = Utilities.CreateWebHostBuilder(args).Build();
