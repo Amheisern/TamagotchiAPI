@@ -32,15 +32,5 @@ namespace TamagotchiAPI.Models
         public List<Feeding> Feedings { get; set; }
         public List<Scolding> Scoldings { get; set; }
 
-        // public bool deadPet
-        // {
-        //     get
-        //     {
-        //         if (Playtime.When > DateTime.Now(3))
-        //         {
-        //             IsDead = true;
-        //         }
-        //     }
-        // }
     }
 }
