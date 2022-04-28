@@ -1,0 +1,20 @@
+{
+  "folders": [
+	{
+		"path": ".."
+	},
+	{
+		"path": "..\\..\\GameNightWithFriends"
+	},
+	{
+		"path": "..\\..\\ApiClient"
+	},
+	{
+		"path": "..\\..\\ExplosionAPI"
+	},
+	{
+		"path": "..\\..\\RhythmsGonnaGetYou"
+	}
+],
+  "settings": {}
+}
