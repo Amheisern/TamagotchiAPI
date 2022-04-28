@@ -20,6 +20,7 @@ dotnet new sdg-api -o TamagotchiAPI
 
 ### Resources
 
+- [Handbook: Buidling API Clients in C# and .NET](https://handbook.suncoast.io/lessons/cs-api-clients)
 - [Web API Tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0)
 - [Web API docs](https://dotnet.microsoft.com/apps/aspnets)
 
