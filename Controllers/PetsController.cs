@@ -175,9 +175,6 @@ namespace TamagotchiAPI.Controllers
             }
             else if (pet.HasPulse() == true)
             {
-
-
-
                 playtime.PetId = pet.Id;
                 playtime.When = DateTime.Now;
                 pet.HungerLevel += 3;
