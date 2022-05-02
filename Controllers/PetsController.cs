@@ -166,8 +166,9 @@ namespace TamagotchiAPI.Controllers
         //nested controllers start here --------------------------------------------------------------
         //Playtime nested controller
         [HttpPost("{id}/Playtimes")]
-        public async Task<ActionResult<Playtime>> CreatePlaytimesForPet(int id, Playtime playtime)
+        public async Task<ActionResult<Playtime>> CreatePlaytimesForPet(int id)
         {
+            var playtime = new Playtime();
             var pet = await _context.Pets.FindAsync(id);
             if (pet == null)
             {
