@@ -193,8 +193,9 @@ namespace TamagotchiAPI.Controllers
         }
         // feedings nested controller
         [HttpPost("{id}/Feedings")]
-        public async Task<ActionResult<Feeding>> CreateFeedingsForPet(int id, Feeding feeding)
+        public async Task<ActionResult<Feeding>> CreateFeedingsForPet(int id)
         {
+            var feeding = new Feeding();
             var pet = await _context.Pets.FindAsync(id);
             if (pet == null)
             {
@@ -213,8 +214,9 @@ namespace TamagotchiAPI.Controllers
         }
         // scolding nested controller 
         [HttpPost("{id}/Scoldings")]
-        public async Task<ActionResult<Scolding>> CreateScoldingsForPet(int id, Scolding scolding)
+        public async Task<ActionResult<Scolding>> CreateScoldingsForPet(int id)
         {
+            var scolding = new Scolding();
             var pet = await _context.Pets.FindAsync(id);
             if (pet == null)
             {
