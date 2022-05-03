@@ -174,22 +174,21 @@ namespace TamagotchiAPI.Controllers
             {
                 return NotFound();
             }
-            else if (pet.HasPulse() == true)
-            {
+            // else if (pet.HasPulse() == true)
+            // {
                 playtime.PetId = pet.Id;
                 playtime.When = DateTime.Now;
                 pet.HungerLevel += 3;
                 pet.HappinessLevel += 5;
                 pet.LastInteractedWithDate = DateTime.Now;
-
                 _context.Playtimes.Add(playtime);
                 await _context.SaveChangesAsync();
                 return Ok(playtime);
-            }
-            else
-            {
-                return BadRequest();
-            }
+            // }
+            // else
+            // {
+            //     return BadRequest();
+            // }
             // else
             // {
             //     return Ok("Pet DEAD.  I blame you! ");
