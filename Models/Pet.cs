@@ -17,7 +17,7 @@ namespace TamagotchiAPI.Models
         public bool HasPulse()
         {
 
-            if (LastInteractedWithDate.AddDays(3) < DateTime.Now || HappinessLevel <= 0)
+            if (LastInteractedWithDate.AddDays(3) < DateTime.Now )
             {
                 IsDead = true;
             }
