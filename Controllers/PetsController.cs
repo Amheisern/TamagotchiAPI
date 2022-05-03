@@ -188,8 +188,12 @@ namespace TamagotchiAPI.Controllers
             }
             else
             {
-                return Ok("Pet DEAD.  I blame you! ");
+                return BadRequest();
             }
+            // else
+            // {
+            //     return Ok("Pet DEAD.  I blame you! ");
+            // }
         }
         // feedings nested controller
         [HttpPost("{id}/Feedings")]
