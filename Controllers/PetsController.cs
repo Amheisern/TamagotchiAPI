@@ -87,6 +87,7 @@ namespace TamagotchiAPI.Controllers
 
             // Tell the database to consider everything in pet to be _updated_ values. When
             // the save happens the database will _replace_ the values in the database with the ones from pet
+            
             _context.Entry(pet).State = EntityState.Modified;
 
             try
